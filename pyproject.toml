@@ -1,7 +1,7 @@
 [project]
 name = "lie-detectors"
 version = "0.1.0"
-description = "Load pre-trained lie-detection probes from the AI Safety Institute HuggingFace collection."
+description = "Load pre-trained lie-detection probes."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
