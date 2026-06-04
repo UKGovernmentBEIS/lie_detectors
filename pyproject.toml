@@ -1,6 +1,6 @@
 [project]
 name = "lie-detectors"
-version = "0.1.0"
+version = "0.0.0"  # Updated by CICD
 description = "Load pre-trained lie-detection probes."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -18,7 +18,7 @@ Homepage = "https://github.com/UKGovernmentBEIS/lie_detectors"
 Collection = "https://huggingface.co/collections/ai-safety-institute/lie-detection"
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=8", "ruff>=0.6", "pyright>=1.1"]
 
 [build-system]
 requires = ["hatchling"]
@@ -37,4 +37,4 @@ markers = [
 [tool.ruff.lint]
 # jaxtyping shape annotations (e.g. Float[Tensor, "*batch d_model"]) are not valid Python
 # forward-reference syntax, which ruff would otherwise flag.
-ignore = ["F722"]
+ignore = ["F722", "F821"]

@@ -26,7 +26,7 @@ def _save_legacy_checkpoint(path) -> None:
     legacy_enum.__module__ = LEGACY_MODULE
 
     legacy_mod = types.ModuleType(LEGACY_MODULE)
-    legacy_mod.ProbeArchitecture = legacy_enum
+    setattr(legacy_mod, "ProbeArchitecture", legacy_enum)
 
     saved = sys.modules.get(LEGACY_MODULE)
     sys.modules[LEGACY_MODULE] = legacy_mod
@@ -59,6 +59,7 @@ def test_load_probe_resolves_legacy_module_path(tmp_path):
     probe = load_probe(path)
 
     assert isinstance(probe, MeanDifferenceProbe)
+    assert probe.hyperparams is not None
     # Resolved to *our* enum, by identity — so PROBE_REGISTRY lookups work.
     assert probe.hyperparams.probe_architecture is ProbeArchitecture.DIFFERENCE_IN_MEANS
     assert probe.hyperparams.layer == 28

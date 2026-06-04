@@ -30,6 +30,7 @@ def test_download_and_forward_dim_probe(hf_online, tmp_path):
     probe = get_probe(REPO_ID, filename=SMALL_DIM_FILENAME, cache_dir=str(tmp_path))
 
     assert isinstance(probe, MeanDifferenceProbe)
+    assert probe.hyperparams is not None
     assert probe.hyperparams.probe_architecture is ProbeArchitecture.DIFFERENCE_IN_MEANS
     assert probe.threshold.ndim == 0 and probe.threshold.dtype.is_floating_point
 
